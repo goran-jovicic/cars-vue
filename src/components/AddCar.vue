@@ -39,6 +39,7 @@
       </div>
       <button>Submit</button>
     </form>
+      <button @click="resetForm">Reset</button>
   </div>
 </template>
 
@@ -64,6 +65,18 @@ export default {
   methods : {
     handleAdd () {
       carsService.add(this.addCar)
+    },
+
+    resetForm () {
+      this.addCar = {
+        "brand": "",
+        "model": "",
+        "year": "",
+        "maxSpeed": "",
+        "isAutomatic": "",
+        "engine": "",
+        "numberOfDoors": "",
+      }
     }
   }
 }
