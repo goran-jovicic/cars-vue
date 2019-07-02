@@ -32,6 +32,10 @@ export default class CarsService {
             console.log(e)
         })
     }
+
+    delete(id){
+        return axios.delete(`cars/${id}`)
+    }
 }
 
 export const carsService = new CarsService() 

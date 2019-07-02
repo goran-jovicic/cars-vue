@@ -68,9 +68,11 @@ export default {
     handleForm () {
       if (this.id){
         carsService.edit(this.id,this.addCar)
+        this.$router.push(`/cars`)
         return
       }
       carsService.add(this.addCar)
+      this.$router.push(`/cars`)
     },
 
     resetForm () {
