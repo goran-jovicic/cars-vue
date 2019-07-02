@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form @submit.prevent="handleAdd">
+    <form @submit.prevent="handleForm">
       <div>
         <label for="brand">Brand : </label>
         <input type="text" id="brand" placeholder="Brand" v-model="addCar.brand" required pattern=".{2,20}" title="2 characters minimum"/>
@@ -25,7 +25,7 @@
       </div>
       <div>
         <label for="isAutomatic">Automatic</label>
-        <input type="checkbox" id="isAutomatic" name="yes" value="true" v-model="addCar.isAutomatic" required/>
+        <input type="checkbox" id="isAutomatic" name="yes" value="true" v-model="addCar.isAutomatic"/>
       </div>
       <div>
         <label for="diesel">Diesel</label>
@@ -50,6 +50,7 @@ import { carsService } from '@/services/CarsService'
 export default {
   data () {
     return {
+      id : "",
       addCar : {
         "brand": "",
         "model": "",
@@ -64,7 +65,11 @@ export default {
   },
   
   methods : {
-    handleAdd () {
+    handleForm () {
+      if (this.id){
+        carsService.edit(this.id,this.addCar)
+        return
+      }
       carsService.add(this.addCar)
     },
 
@@ -82,6 +87,19 @@ export default {
 
     previewForm () {
       alert(JSON.stringify(this.addCar,null,4))
+    }
+  },
+  created () {
+    this.id = this.$router.currentRoute.params.id;
+    if(this.id){
+      carsService.getSingleCar(this.id)
+      .then(response => {
+        this.addCar = response.data
+      })
+      .catch(e => {
+        console.log(e)
+      })
+      // console.log(carsService.getSingleCar(this.id))
     }
   }
 }
