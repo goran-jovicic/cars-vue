@@ -2,7 +2,8 @@
   <div>
       <ul>
         <li v-for="(car,index) in cars" :key="index">
-          {{ `${car.brand} ${car.model} ${car.year} ${car.maxSpeed} ${car.isAutomatic} ${car.engine} ${car.numberOfDoors}` }}
+          {{ `${car.brand} ${car.model} ${car.year} ${car.maxSpeed} ${car.isAutomatic} ${car.engine} ${car.numberOfDoors}` }} 
+          <button @click="routeToEdit(car.id)">Edit</button>
         </li>
       </ul>
   </div>
@@ -25,6 +26,12 @@ export default {
         "numberOfDoors": "",
         "id": ""
       }
+    }
+  },
+
+  methods: {
+    routeToEdit (carId) {
+      
     }
   },
 

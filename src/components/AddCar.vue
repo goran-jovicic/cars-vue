@@ -3,15 +3,15 @@
     <form @submit.prevent="handleAdd">
       <div>
         <label for="brand">Brand : </label>
-        <input type="text" id="brand" placeholder="Brand" v-model="addCar.brand"/>
+        <input type="text" id="brand" placeholder="Brand" v-model="addCar.brand" required pattern=".{2,20}" title="2 characters minimum"/>
       </div>
       <div>
         <label for="model">Model : </label>
-        <input type="text" id="model" placeholder="Model" v-model="addCar.model"/>
+        <input type="text" id="model" placeholder="Model" v-model="addCar.model" required pattern=".{2,20}" title="2 characters minimum"/>
       </div>
       <div>
         <label for="year">Year : </label>
-        <select v-model="addCar.year">
+        <select v-model="addCar.year" required>
           <option v-for="(year,index) in years" :key="index"> {{ year }} </option>
         </select>
       </div>
@@ -21,21 +21,21 @@
       </div>
       <div>
         <label for="numberOfDoors">Number of Doors : </label>
-        <input type="number" id="numberOfDoors" placeholder="3" v-model="addCar.numberOfDoors"/>
+        <input type="number" id="numberOfDoors" placeholder="3" v-model="addCar.numberOfDoors" required/>
       </div>
       <div>
         <label for="isAutomatic">Automatic</label>
-        <input type="checkbox" id="isAutomatic" name="yes" value="true" v-model="addCar.isAutomatic"/>
+        <input type="checkbox" id="isAutomatic" name="yes" value="true" v-model="addCar.isAutomatic" required/>
       </div>
       <div>
         <label for="diesel">Diesel</label>
-        <input type="radio" id="diesel" value="diesel" v-model="addCar.engine"/>
+        <input type="radio" id="diesel" value="diesel" v-model="addCar.engine" required/>
         <label for="petrol">petrol</label>
-        <input type="radio" id="petrol" value="petrol" v-model="addCar.engine"/>
+        <input type="radio" id="petrol" value="petrol" v-model="addCar.engine" required/>
         <label for="electric">electric</label>
-        <input type="radio" id="electric" value="electric" v-model="addCar.engine"/>
+        <input type="radio" id="electric" value="electric" v-model="addCar.engine" required/>
         <label for="hybrid">hybrid</label>
-        <input type="radio" id="hybrid" value="hybrid" v-model="addCar.engine"/>
+        <input type="radio" id="hybrid" value="hybrid" v-model="addCar.engine" required/>
       </div>
       <button>Submit</button>
     </form>
