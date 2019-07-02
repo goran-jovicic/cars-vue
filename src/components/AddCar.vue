@@ -39,7 +39,8 @@
       </div>
       <button>Submit</button>
     </form>
-      <button @click="resetForm">Reset</button>
+    <button @click="resetForm">Reset</button>
+    <button @click="previewForm">Preview</button>
   </div>
 </template>
 
@@ -77,6 +78,10 @@ export default {
         "engine": "",
         "numberOfDoors": "",
       }
+    },
+
+    previewForm () {
+      alert(JSON.stringify(this.addCar,null,4))
     }
   }
 }
