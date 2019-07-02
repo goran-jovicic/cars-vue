@@ -1,0 +1,74 @@
+<template>
+  <div>
+    <form @submit.prevent="handleAdd">
+      <div>
+        <label for="brand">Brand : </label>
+        <input type="text" id="brand" placeholder="Brand" v-model="addCar.brand"/>
+      </div>
+      <div>
+        <label for="model">Model : </label>
+        <input type="text" id="model" placeholder="Model" v-model="addCar.model"/>
+      </div>
+      <div>
+        <label for="year">Year : </label>
+        <select v-model="addCar.year">
+          <option v-for="(year,index) in years" :key="index"> {{ year }} </option>
+        </select>
+      </div>
+      <div>
+        <label for="maxSpeed">Max Speed : </label>
+        <input type="number" id="maxSpeed" placeholder="100" v-model="addCar.maxSpeed"/>
+      </div>
+      <div>
+        <label for="numberOfDoors">Number of Doors : </label>
+        <input type="number" id="numberOfDoors" placeholder="3" v-model="addCar.numberOfDoors"/>
+      </div>
+      <div>
+        <label for="isAutomatic">Automatic</label>
+        <input type="checkbox" id="isAutomatic" name="yes" value="true" v-model="addCar.isAutomatic"/>
+      </div>
+      <div>
+        <label for="diesel">Diesel</label>
+        <input type="radio" id="diesel" value="diesel" v-model="addCar.engine"/>
+        <label for="petrol">petrol</label>
+        <input type="radio" id="petrol" value="petrol" v-model="addCar.engine"/>
+        <label for="electric">electric</label>
+        <input type="radio" id="electric" value="electric" v-model="addCar.engine"/>
+        <label for="hybrid">hybrid</label>
+        <input type="radio" id="hybrid" value="hybrid" v-model="addCar.engine"/>
+      </div>
+      <button>Submit</button>
+    </form>
+  </div>
+</template>
+
+<script>
+import { carsService } from '@/services/CarsService'
+
+export default {
+  data () {
+    return {
+      addCar : {
+        "brand": "",
+        "model": "",
+        "year": "",
+        "maxSpeed": "",
+        "isAutomatic": "",
+        "engine": "",
+        "numberOfDoors": "",
+      },
+      years: Array(30).fill(1990).map((n, i) => n + i)
+    }
+  },
+  
+  methods : {
+    handleAdd () {
+      carsService.add(this.addCar)
+    }
+  }
+}
+</script>
+
+<style>
+
+</style>

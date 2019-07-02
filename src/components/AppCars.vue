@@ -2,7 +2,7 @@
   <div>
       <ul>
         <li v-for="(car,index) in cars" :key="index">
-          {{ `${car.brand} ${car.model} ${car.year} ${car.maxSpeed} ${car.isAutomatic} ${car.engine} ${car.numberOfDoors} ${car.id}` }}
+          {{ `${car.brand} ${car.model} ${car.year} ${car.maxSpeed} ${car.isAutomatic} ${car.engine} ${car.numberOfDoors}` }}
         </li>
       </ul>
   </div>
