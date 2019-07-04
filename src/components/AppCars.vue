@@ -2,7 +2,7 @@
   <div>
       <ul>
         <li v-for="(car,index) in cars" :key="index">
-          {{ `${car.brand} ${car.model} ${car.year} ${car.maxSpeed} ${car.isAutomatic} ${car.engine} ${car.numberOfDoors}` }} 
+          {{ `${car.brand} ${car.model} ${car.year} ${car.maxSpeed} Automatic : ${car.isAutomatic} ${car.engine} ${car.numberOfDoors}` }} 
           <router-link :to="editCar(car)">Edit</router-link>
           <button @click="handleDelete(car.id)">Delete Car</button>
         </li>
@@ -37,6 +37,9 @@ export default {
 
     handleDelete(carID){
       carsService.delete(carID)
+      .then(response => {
+            this.cars = this.cars.filter(car => car.id !== carID)
+          })
     }
   },
 
