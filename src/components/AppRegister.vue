@@ -2,7 +2,7 @@
   <form @submit.prevent="registerUser">
     <div>
       <label for="username">Username : </label>
-      <input type="text" id="username" name="username" v-model="user.userName"/>
+      <input type="text" id="username" name="username" v-model="user.username"/>
     </div>
     <div>
       <label>Email :</label>
@@ -14,7 +14,7 @@
     </div>
     <div>
       <label for="password">Confirm Password :</label>
-      <input type="password" id="password_confirm" name="password_confirm">
+      <input type="password" id="password_confirmation" name="password_confirmation" v-model="user.password_confirmation">
     </div>
     <div>
       <button class="btn btn-primary">Submit</button>
@@ -29,16 +29,17 @@ export default {
   data () {
     return {
       user : {
-        userName : '',
+        username : '',
         email : '',
         password : '',
+        password_confirmation : ''
       }
     }
   },
 
   methods : {
     registerUser() {
-      authService.register(this.user.userName,this.user.email,this.user.password)
+      authService.register(this.user)
       this.$router.push('/login')
     }
   }

@@ -29,10 +29,10 @@ export default class AuthService {
         return !!window.localStorage.getItem('loginToken')
     }
 
-    register(username, email, password) {
-        return axios.post('http://localhost:8000/api/register', {
-            username, email, password
-        }).then(data => {
+    register(user) {
+        console.log(user)
+        return axios.post('http://localhost:8000/api/register', user)
+        .then(data => {
             console.log(data)
         }).catch(e => {
             console.log(e)
