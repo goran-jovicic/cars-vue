@@ -3,15 +3,28 @@
     <nav>
       <span><router-link to="/cars">Cars</router-link></span>
       <span><router-link to="/add">Add car</router-link></span>
+      <span v-if="!checker"><router-link to="/login">Login</router-link></span>
+      <span @click="logoutUser" v-if="checker"><router-link to="/logout">Logout</router-link></span>
+      <span v-if="!checker"><router-link to="/register">Register</router-link></span>
     </nav>
     <router-view/>
   </div>
 </template>
 
 <script>
-
+import { authService } from './services/AuthService'
 export default {
-
+  methods : {
+    logoutUser(){
+      authService.logout()
+      this.$router.push('/cars')
+    }
+  },
+  computed:  {
+    checker () {
+      return authService.isAuthenticated()
+    }
+  },
 }
 </script>
 

@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import AppCars from './components/AppCars'
 import AddCar from './components/AddCar'
 import Login from './components/Login'
+import Register from './components/AppRegister'
 
 Vue.config.productionTip = false
 
@@ -14,7 +15,8 @@ const routes = [
   { path: '/cars', component : AppCars },
   { path: '/add', component : AddCar },
   { path: '/edit/:id', component: AddCar },
-  { path: '/login', component: Login},
+  { path: '/login', component: Login },
+  { path: '/register', component: Register },
 ]
 
 const router = new VueRouter({
