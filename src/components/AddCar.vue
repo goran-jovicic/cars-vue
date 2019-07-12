@@ -25,7 +25,7 @@
       </div>
       <div>
         <label for="isAutomatic">Automatic</label>
-        <input type="checkbox" id="isAutomatic" name="yes" value="true" v-model="addCar.isAutomatic"/>
+        <input type="checkbox" id="isAutomatic" name="yes" checked="false" v-model="addCar.isAutomatic"/>
       </div>
       <div>
         <label for="diesel">Diesel</label>
@@ -56,7 +56,7 @@ export default {
         "model": "",
         "year": "",
         "maxSpeed": "",
-        "isAutomatic": "",
+        "isAutomatic": "1",
         "engine": "",
         "numberOfDoors": "",
       },
