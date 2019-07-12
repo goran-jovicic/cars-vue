@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export default class CarsService {
     constructor() {
-        axios.defaults.baseURL = `http://localhost:3000/api`
+        axios.defaults.baseURL = `http://localhost:8000/api`
     }
 
     getAll () {
@@ -18,18 +18,12 @@ export default class CarsService {
         .then(response => {
             console.log(response)
         })
-        .catch(e => {
-            console.log(e)
-        })
     }
 
     edit (id,addCar) {
         axios.put(`cars/${id}`,addCar)
         .then(response => {
             console.log(response)
-        })
-        .catch(e => {
-            console.log(e)
         })
     }
 

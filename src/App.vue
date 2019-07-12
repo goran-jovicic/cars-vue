@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <nav>
-      <router-link to="/cars">Cars</router-link>
-      <router-link to="/add">Add car</router-link>
+      <span><router-link to="/cars">Cars</router-link></span>
+      <span><router-link to="/add">Add car</router-link></span>
     </nav>
     <router-view/>
   </div>
@@ -23,5 +23,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+nav,span {
+  margin :0.5rem;
 }
 </style>
