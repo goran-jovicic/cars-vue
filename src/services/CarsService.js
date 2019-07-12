@@ -18,6 +18,9 @@ export default class CarsService {
         .then(response => {
             console.log(response)
         })
+        .catch(e => {
+            console.log(e)
+        })
     }
 
     edit (id,addCar) {
