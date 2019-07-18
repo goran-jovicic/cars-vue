@@ -1,9 +1,11 @@
 import { authService } from './../services/AuthService'
 
+const user = JSON.parse(localStorage.getItem('user')) || null
+
 export const AuthModule = {
   state: {
-    user: null,
-    err : '',
+    user,
+    error : null,
   },
 
   mutations: {
@@ -21,6 +23,12 @@ export const AuthModule = {
       .catch(e => {
         console.log(e) // eslint-disable-line
       })
-    }
+    },
   },
+
+  getters: {
+    getUser(state){
+      return state.user
+    }
+  }
 }

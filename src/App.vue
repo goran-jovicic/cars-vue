@@ -7,13 +7,13 @@
       <span>
         <router-link to="/add">Add car</router-link>
       </span>
-      <span v-if="!checker">
+      <span v-if="!user">
         <router-link to="/login">Login</router-link>
       </span>
-      <span @click="logoutUser" v-if="checker">
+      <span @click="logoutUser" v-else>
         <router-link to="/logout">Logout</router-link>
       </span>
-      <span v-if="!checker">
+      <span>
         <router-link to="/register">Register</router-link>
       </span>
     </nav>
@@ -23,6 +23,8 @@
 
 <script>
 import { authService } from "./services/AuthService";
+import { mapState, mapGetters } from 'vuex'
+
 export default {
   methods: {
     logoutUser() {
@@ -30,10 +32,14 @@ export default {
       this.$router.push("/cars");
     }
   },
+
   computed: {
-    checker() {
-      return authService.isAuthenticated();
-    }
+    // checker() {
+    //   return authService.isAuthenticated();
+    // }
+    ...mapGetters ({
+      user: 'getUser'
+    })
   }
 };
 </script>

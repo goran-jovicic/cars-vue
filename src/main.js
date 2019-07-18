@@ -13,17 +13,30 @@ Vue.use(VueRouter)
 
 const routes = [
   { path: '/', redirect : '/cars' },
-  { path: '/cars', component : AppCars },
-  { path: '/add', component : AddCar },
-  { path: '/edit/:id', component: AddCar },
-  { path: '/login', component: Login },
-  { path: '/register', component: Register },
+  { path: '/cars', component : AppCars, name: 'cars' },
+  { path: '/add', component : AddCar, name: 'add-car' },
+  { path: '/edit/:id', component: AddCar, name: 'edit-car' },
+  { path: '/login', component: Login, name: 'login' },
+  { path: '/register', component: Register, name: 'register' },
 ]
 
 const router = new VueRouter({
   routes,
   mode : 'history'
 })
+
+// router.beforeEach((to, from, next)=> {
+    
+//   if(to.name !== 'login' && !authService.isAuthenticated()) {
+//       return router.push( {name:'login'}); // reroute na login ako nije ulogovan
+//   }
+
+//   if(to.name === 'login' && authService.isAuthenticated()) {
+//       return router.push({ name: from.name }) // vraca na stranicu gde si bio pre klika
+//   }
+
+//   next()
+// })
 
 new Vue({
   router,
