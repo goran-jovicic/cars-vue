@@ -1,6 +1,6 @@
 <template>
   <div class="container mt-4">
-    <form class="form-signin" @submit.prevent="login">
+    <form class="form-signin" @submit.prevent="submitForm">
       <h2 class="form-signin-heading">Please login</h2>
       <input
         v-model="email"
@@ -25,7 +25,9 @@
 </template>
 
 <script>
-import { authService } from "../services/AuthService";
+import { mapActions } from 'vuex'
+// import { authService } from "../services/AuthService";
+
 
 export default {
   data() {
@@ -36,11 +38,23 @@ export default {
   },
 
   methods: {
-    login() {
-      authService.login(this.email, this.password).then(() => {
-        this.$router.push('/cars');
-      });
+    ...mapActions({
+      login: 'login'
+    }),
+
+    submitForm() {
+      this.login({
+        email: this.email,
+        password: this.password
+      }).then(() => {
+        this.$router.push('/cars')
+      })
     }
+    // login() {
+    //   // authService.login(this.email, this.password).then(() => {   // old way
+    //   //   this.$router.push("/cars");
+    //   // });
+    // }
   }
 };
 </script>

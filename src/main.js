@@ -5,6 +5,7 @@ import AppCars from './components/AppCars'
 import AddCar from './components/AddCar'
 import Login from './components/Login'
 import Register from './components/AppRegister'
+import store from './store'
 
 Vue.config.productionTip = false
 
@@ -26,5 +27,6 @@ const router = new VueRouter({
 
 new Vue({
   router,
-  render: h => h(App),
+  store,
+  render: h => h(App)
 }).$mount('#app')

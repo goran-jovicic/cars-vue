@@ -9,9 +9,10 @@ export default class AuthService {
     login(email, password) {
         return axios.post('http://localhost:8000/api/login', {
             email, password
-        }).then(data => {
-            window.localStorage.setItem('loginToken', data.data.token)
+        }).then(({data}) => {
+            window.localStorage.setItem('loginToken', data.token)
             this.setAxiosDefaultAuthorizationHeader()
+            return data.user;
         })
     }
 
@@ -32,11 +33,6 @@ export default class AuthService {
     register(user) {
         console.log(user)
         return axios.post('http://localhost:8000/api/register', user)
-        .then(data => {
-            console.log(data)
-        }).catch(e => {
-            console.log(e)
-        })
     }
 }
 
